@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.bl.UserReg.MoodAnalyser;
 import com.bl.UserReg.UserRegistration;
 
 public class UserRegistrationTest {
@@ -139,5 +140,20 @@ public class UserRegistrationTest {
     public void givenEmail1WhenNotProperShouldReturnFalse() {
         boolean result = userRegistration.emailIdValidator("abc()*@gmail.com");
         Assert.assertFalse(result);
+    }
+    /**
+     * Unit test for validating mood of the User
+     */
+
+    @Test
+    public void givenMessageWhenHappyShouldReturnEntrySuccessful() {
+        String result = MoodAnalyser.analyseMood("User is Happy");
+        Assert.assertEquals("Entry Successful", result);
+    }
+
+    @Test
+    public void givenEmail2WhenNotProperShouldReturnEntryFailed() {
+        String result = MoodAnalyser.analyseMood("User is Sad");
+        Assert.assertEquals("Entry Failed", result);
     }
 }
