@@ -26,4 +26,15 @@ public class UserRegistration {
 		Matcher matcher = pattern.matcher(email);
 		return matcher.matches();
 	}
+
+	/**
+	 * Created a method to validate Mobile Number Format
+	 */
+	public boolean phoneNumber(String phoneNumber) {
+		// TODO Auto-generated method stub
+		String regex = "^[0-9]{2}\\s{1}[0-9]{10}$";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(phoneNumber);
+		return matcher.matches();
+	}
 }
