@@ -3,9 +3,7 @@ package com.bl.UserRegTest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.bl.UserReg.MoodAnalyser;
-import com.bl.UserReg.UserRegistration;
+import com.bl.UserReg.*;
 
 public class UserRegistrationTest {
 	UserRegistration userRegistration;
@@ -14,18 +12,26 @@ public class UserRegistrationTest {
         userRegistration = new UserRegistration();
     }
     /*
-     * Unit test for validating last name
+     * Unit test for validating first name
      */
-
     @Test
-    public void givenFirstNameWhenProperShouldReturnTrue() {
-        boolean result = userRegistration.firstName("Shubham");
-        Assert.assertTrue(result);
+    public void givenFirstNameWhenProperShouldReturnTrue(){
+        boolean isValid = userRegistration.validateFirstName.validate("Shubham");
+        Assert.assertTrue(isValid);
+
     }
+    
+
+	/*
+	 * @Test public void givenFirstNameWhenProperShouldReturnTrue() { boolean result
+	 * = userRegistration.validateFirstName.validate("Shubham");
+	 * Assert.assertTrue(result); }
+	 */
+    //boolean re =userRegistration.firstName(str -> match.Match(str).Value);
 
     @Test
     public void givenFirstNameWhenNotProperShouldReturnFalse() {
-        boolean result = userRegistration.firstName("shubham");
+        boolean result = userRegistration.validateFirstName.validate("shubham");
         Assert.assertFalse(result);
     }
     /*
@@ -33,13 +39,13 @@ public class UserRegistrationTest {
      */
     @Test
     public void givenLastNameWhenProperShouldReturnTrue() {
-        boolean result = userRegistration.lastName("Shewale");
+        boolean result = userRegistration.validateLastName.validate("Shewale");
         Assert.assertTrue(result);
     }
 
     @Test
     public void givenLastNameWhenNotProperShouldReturnFalse() {
-        boolean result = userRegistration.lastName("shewale");
+        boolean result = userRegistration.validateLastName.validate("shewale");
         Assert.assertFalse(result);
     }
     /**
@@ -47,13 +53,13 @@ public class UserRegistrationTest {
      */
     @Test
     public void givenEmailWhenProperShouldReturnTrue() {
-        boolean result = userRegistration.email("abc@gmail.com");
+        boolean result = userRegistration.validateEmail.validate("abc@gmail.com");
         Assert.assertTrue(result);
     }
 
     @Test
     public void givenEmailWhenNotPrgioperShouldReturnFalse() {
-        boolean result = userRegistration.email("abc()*@gmail.com");
+        boolean result = userRegistration.validateEmail.validate("abc()*@gmail.com");
         Assert.assertFalse(result);
     }
     /**
@@ -61,13 +67,13 @@ public class UserRegistrationTest {
      */
     @Test
     public void givenPhoneNumberWhenProperShouldReturnTrue() {
-        boolean result = userRegistration.phoneNumber("91 7844999888");
+        boolean result = userRegistration.validateMobileNumber.validate("91 7844999888");
         Assert.assertTrue(result);
     }
 
     @Test
     public void givenPhoneNumberWhenNotProperShouldReturnFalse() {
-        boolean result = userRegistration.phoneNumber("+91 7844999888");
+        boolean result = userRegistration.validateMobileNumber.validat("+91 7844999888");
         Assert.assertFalse(result);
     }
     /**
